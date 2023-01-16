@@ -7,7 +7,7 @@ const config = {
         '^.+\\.(t|j)s$': ['@swc/jest'],
     },
     collectCoverageFrom: ['**/*.(t|j)s'],
-    coverageDirectory: '../coverage',
+    coverageDirectory: './coverage',
     testEnvironment: 'node',
     moduleNameMapper: {
         '@app(.*)': '<rootDir>/src/app/$1',
