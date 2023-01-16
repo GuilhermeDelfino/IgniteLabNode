@@ -15,6 +15,7 @@
 -   Nest
 -   Typescript
 -   PrismaORM
+-   OpenAPI / Swagger
 
 ## Configurations
 
@@ -36,6 +37,6 @@
 -   In Memory Database - Tests
 -   Factory - Create Domains
 -   Builder - Validations
--   Mapper and View-Model - Transform
+-   Mapper and View-Model - Transform classes
 -   Repository - Database
--   DTOs
+-   DTOs - In controllers to validation
