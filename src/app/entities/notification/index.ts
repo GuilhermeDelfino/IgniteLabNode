@@ -60,4 +60,7 @@ export class Notification {
     read() {
         this.props.readAt = new Date();
     }
+    unread() {
+        this.props.readAt = null;
+    }
 }
