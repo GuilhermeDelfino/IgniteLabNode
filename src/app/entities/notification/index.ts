@@ -8,7 +8,7 @@ export type NotificationProps = {
     content: string;
     category: Categories;
     readAt?: Date | null;
-    createdAt: Date;
+    createdAt?: Date;
 };
 export type NotificationAttributes = {
     id?: string;
@@ -20,7 +20,7 @@ export type NotificationAttributes = {
 };
 export class Notification {
     private props: Required<NotificationAttributes>;
-    constructor(props: Omit<NotificationProps, 'readAt' | 'createdAt'>) {
+    constructor(props: NotificationProps) {
         this.props = {
             ...props,
             content: Content.of(props.content),
