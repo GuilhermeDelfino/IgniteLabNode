@@ -8,6 +8,10 @@ export class NotificationRepositoryInMemory extends NotificationRepository {
         if (!notification) return null;
         return notification;
     }
+    async countManyByRecipientId(recipientId: string): Promise<number> {
+        return this.database.filter((n) => n.recipientId === recipientId)
+            .length;
+    }
     async update(notification: Notification): Promise<void> {
         const index = this.database.findIndex((n) => n.id === notification.id);
         if (index >= 0) {
