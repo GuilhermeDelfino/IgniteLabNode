@@ -3,6 +3,9 @@ import { NotificationRepository } from '@app/repositories/NotificationRepository
 
 export class NotificationRepositoryInMemory extends NotificationRepository {
     database: Notification[] = [];
+    async findManyByRecipientId(recipientId: string): Promise<Notification[]> {
+        return this.database.filter((n) => n.recipientId === recipientId);
+    }
     async findById(notificationId: string): Promise<Notification | null> {
         const notification = this.database.find((n) => n.id === notificationId);
         if (!notification) return null;
