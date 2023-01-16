@@ -13,7 +13,6 @@ describe('Use case: Count Notification', () => {
     });
     it('should be able to Count notifications from a recipientId', async () => {
         const useCase = new CountNotificationsRecipient(repo);
-        console.log((repo as NotificationRepositoryInMemory).database);
         const { count } = await useCase.execute({ recipientId: 'new-id' });
         expect(count).toEqual(2);
     });
