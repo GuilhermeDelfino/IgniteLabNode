@@ -12,6 +12,8 @@ const config = {
     moduleNameMapper: {
         '@app(.*)': '<rootDir>/src/app/$1',
         '@test(.*)': '<rootDir>/test/$1',
+        '@helpers(.*)': '<rootDir>/src/helpers/$1',
+        '@src(.*)': '<rootDir>/src/$1',
     },
 };
 module.exports = config;
