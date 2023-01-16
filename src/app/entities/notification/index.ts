@@ -9,6 +9,7 @@ export type NotificationProps = {
     category: Categories;
     readAt?: Date | null;
     createdAt?: Date;
+    cancelAt?: Date | null;
 };
 export type NotificationAttributes = {
     id?: string;
@@ -17,6 +18,7 @@ export type NotificationAttributes = {
     category: Categories;
     readAt?: Date | null;
     createdAt: Date;
+    canceledAt?: Date | null;
 };
 export class Notification {
     private props: Required<NotificationAttributes>;
@@ -27,6 +29,7 @@ export class Notification {
             id: props.id || randomUUID(),
             createdAt: new Date(),
             readAt: null,
+            canceledAt: null,
         };
     }
 
@@ -47,5 +50,14 @@ export class Notification {
     }
     get readAt() {
         return this.props.readAt;
+    }
+    get canceledAt() {
+        return this.props.canceledAt;
+    }
+    cancel() {
+        this.props.canceledAt = new Date();
+    }
+    read() {
+        this.props.readAt = new Date();
     }
 }
