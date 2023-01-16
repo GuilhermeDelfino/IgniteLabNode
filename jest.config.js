@@ -2,11 +2,11 @@
 const config = {
     moduleFileExtensions: ['js', 'json', 'ts'],
     rootDir: './',
-    testRegex: '.*\\.spec\\.ts$',
+    testRegex: '.*\\.(spec|test)\\.ts$',
     transform: {
         '^.+\\.(t|j)s$': ['@swc/jest'],
     },
-    collectCoverageFrom: ['**/*.(t|j)s'],
+    collectCoverageFrom: ['src/**/*.(t|j)s'],
     coverageDirectory: './coverage',
     testEnvironment: 'node',
     moduleNameMapper: {
