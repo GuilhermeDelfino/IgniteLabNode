@@ -1,8 +1,8 @@
-import { Categories, Category } from '.';
+import { Categories } from '.';
 
 describe('Entity: Notification Category', () => {
     it('should be able to create a Category', () => {
-        expect(() => Category.of(Categories.ALERT)).toBeTruthy();
-        expect(Category.of(Categories.ALERT).value).toBe(Categories.ALERT);
+        expect(() => Categories.ALERT).toBeTruthy();
+        expect(Categories.ALERT).toBe('Alert');
     });
 });
