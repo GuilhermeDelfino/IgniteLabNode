@@ -42,6 +42,20 @@ export class NotificationController {
         );
     }
     @ApiParam({
+        name: 'recipientId',
+        example: 'recipient-id',
+        required: true,
+    })
+    @Get('recipient/:recipientId/count')
+    async countNotificationsRecipient(
+        @Param('recipientId')
+        recipientId: string
+    ) {
+        return await this.countNotificationRecipientUseCase.execute({
+            recipientId,
+        });
+    }
+    @ApiParam({
         name: 'notificationId',
         example: 'notifications-id',
         required: true,
