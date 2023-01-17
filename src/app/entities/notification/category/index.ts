@@ -1,3 +1,5 @@
+import { CategoryNotFoundError } from '@app/validations/errors/CategoryNotFoundError';
+
 export enum Categories {
     SIMPLE = 'Simple',
     PRIORITY = 'Priority',
@@ -6,9 +8,15 @@ export enum Categories {
 }
 
 export function findCategoryEnum(category: string): Categories {
-    return Categories[
-        Object.keys(Categories)[
-            Object.values(Categories).findIndex((c) => c === category)
-        ]
-    ];
+    const categoryEnum =
+        Categories[
+            Object.keys(Categories)[
+                Object.values(Categories).findIndex((c) => c === category)
+            ]
+        ];
+
+    if (!categoryEnum || categoryEnum === null) {
+        throw new CategoryNotFoundError();
+    }
+    return categoryEnum;
 }
