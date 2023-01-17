@@ -14,7 +14,7 @@ describe('Use case: Read Notification', () => {
         const useCase = new ReadNotification(repo);
         await useCase.execute({ notificationId: 'new-id' });
         expect(
-            (repo as NotificationRepositoryInMemory).database[0].readAt
+            (repo as NotificationRepositoryInMemory).database[0].readedAt
         ).toEqual(expect.any(Date));
     });
     it('should be not able to Read a notification', async () => {

@@ -10,7 +10,7 @@ describe('Entity: Notification', () => {
         expect(createNotification().content).toBe('content');
         expect(createNotification().recipientId).toBe('recipient-id');
         expect(createNotification().createdAt).toEqual(expect.any(Date));
-        expect(createNotification().readAt).toEqual(null);
+        expect(createNotification().readedAt).toEqual(null);
         expect(createNotification().id).toEqual(expect.any(String));
     });
 });

@@ -14,7 +14,7 @@ describe('Use case: Unread Notification', () => {
         const useCase = new UnreadNotification(repo);
         await useCase.execute({ notificationId: 'new-id' });
         expect(
-            (repo as NotificationRepositoryInMemory).database[0].readAt
+            (repo as NotificationRepositoryInMemory).database[0].readedAt
         ).toEqual(null);
     });
     it('should be not able to Unread a notification', async () => {
