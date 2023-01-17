@@ -1,5 +1,8 @@
 import { Notification } from '@app/entities/notification';
-import { Categories } from '@app/entities/notification/category';
+import {
+    Categories,
+    findCategoryEnum,
+} from '@app/entities/notification/category';
 import { Notifications as PrismaNotification } from '@prisma/client';
 
 export class PrismaNotificationMapper {
@@ -37,10 +40,10 @@ export class PrismaNotificationMapper {
             content,
             recipientId,
             id,
-            category: Categories[category],
+            category: findCategoryEnum(category),
             createdAt,
-            readedAt,
             canceledAt,
+            readedAt,
         });
     }
 }
