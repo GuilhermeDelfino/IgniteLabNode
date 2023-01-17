@@ -28,8 +28,8 @@ export class Notification {
             content: Content.of(props.content),
             id: props.id || randomUUID(),
             createdAt: new Date(),
-            readedAt: null,
-            canceledAt: null,
+            readedAt: props.readedAt || null,
+            canceledAt: props.canceledAt || null,
         };
     }
 
