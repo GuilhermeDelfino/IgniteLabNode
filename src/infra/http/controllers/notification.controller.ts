@@ -9,6 +9,7 @@ import {
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
 import { SendNotificationDto } from '../dtos/SendNotificationDto';
+import { NotificationViewModel } from '../view-models/notificationViewModel';
 
 @Controller('notification')
 export class NotificationController {
@@ -21,6 +22,25 @@ export class NotificationController {
         private readonly countNotificationRecipientUseCase: CountNotificationsRecipient
     ) {}
 
+    @ApiParam({
+        name: 'recipientId',
+        example: 'recipient-id',
+        required: true,
+    })
+    @Get('recipient/:recipientId/findAll')
+    async findAllByRecipient(
+        @Param('recipientId')
+        recipientId: string
+    ) {
+        const notifications =
+            await this.getNotificationsRecipientUseCase.execute({
+                recipientId,
+            });
+
+        return notifications.notificationsByRecipient.map(
+            NotificationViewModel.notificationToResponseAllFieldsFormatted
+        );
+    }
     @ApiParam({
         name: 'notificationId',
         example: 'notification-id',
