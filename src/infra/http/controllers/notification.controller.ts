@@ -33,6 +33,18 @@ export class NotificationController {
     ) {
         await this.readNotificationUseCase.execute({ notificationId });
     }
+    @ApiParam({
+        name: 'notificationId',
+        example: 'notification-id',
+        required: true,
+    })
+    @Get('unread/:notificationId')
+    async unreadNotification(
+        @Param('notificationId')
+        notificationId: string
+    ) {
+        await this.unreadNotificationUseCase.execute({ notificationId });
+    }
     @Post('send')
     async sendNotification(@Body() body: SendNotificationDto): Promise<void> {
         await this.sendNotificationUseCase.execute(body);
