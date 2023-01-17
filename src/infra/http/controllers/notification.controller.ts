@@ -7,11 +7,12 @@ import {
     SendNotification,
 } from '@app/useCases';
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
-import { ApiParam } from '@nestjs/swagger';
+import { ApiParam, ApiTags } from '@nestjs/swagger';
 import { SendNotificationDto } from '../dtos/SendNotificationDto';
 import { NotificationViewModel } from '../view-models/notificationViewModel';
 
 @Controller('notification')
+@ApiTags('Notification')
 export class NotificationController {
     constructor(
         private readonly sendNotificationUseCase: SendNotification,
