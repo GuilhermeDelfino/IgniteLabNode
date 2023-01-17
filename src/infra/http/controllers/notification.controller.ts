@@ -6,7 +6,7 @@ import {
     ReadNotification,
     SendNotification,
 } from '@app/useCases';
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
 import { SendNotificationDto } from '../dtos/SendNotificationDto';
 import { NotificationViewModel } from '../view-models/notificationViewModel';
@@ -43,10 +43,24 @@ export class NotificationController {
     }
     @ApiParam({
         name: 'notificationId',
+        example: 'notifications-id',
+        required: true,
+    })
+    @Patch('cancel/:notificationId')
+    async cancelNotification(
+        @Param('notificationId')
+        notificationId: string
+    ) {
+        await this.cancelNotificationUseCase.execute({
+            notificationId,
+        });
+    }
+    @ApiParam({
+        name: 'notificationId',
         example: 'notification-id',
         required: true,
     })
-    @Get('read/:notificationId')
+    @Patch('read/:notificationId')
     async readNotification(
         @Param('notificationId')
         notificationId: string
@@ -58,7 +72,7 @@ export class NotificationController {
         example: 'notification-id',
         required: true,
     })
-    @Get('unread/:notificationId')
+    @Patch('unread/:notificationId')
     async unreadNotification(
         @Param('notificationId')
         notificationId: string
