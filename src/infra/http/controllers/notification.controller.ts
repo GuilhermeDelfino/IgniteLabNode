@@ -1,3 +1,4 @@
+import { findCategoryEnum } from '@app/entities/notification/category';
 import {
     UnreadNotification,
     CancelNotification,
@@ -9,6 +10,7 @@ import {
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiParam, ApiTags } from '@nestjs/swagger';
 import { SendNotificationDto } from '../dtos/SendNotificationDto';
+import { CategoryNotFoundException } from '../errors/CategoryNotFoundException';
 import { NotificationViewModel } from '../view-models/notificationViewModel';
 
 @Controller('notification')
@@ -96,6 +98,10 @@ export class NotificationController {
     }
     @Post('send')
     async sendNotification(@Body() body: SendNotificationDto): Promise<void> {
+        const categoryEnum = findCategoryEnum(body.category);
+        if (!categoryEnum || categoryEnum === null) {
+            throw new CategoryNotFoundException();
+        }
         await this.sendNotificationUseCase.execute(body);
     }
 }
