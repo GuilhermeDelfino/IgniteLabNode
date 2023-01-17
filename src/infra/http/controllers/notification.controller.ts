@@ -1,5 +1,11 @@
-import { ReadNotification } from '@app/useCases/readNotification';
-import { SendNotification } from '@app/useCases/sendNotification';
+import {
+    UnreadNotification,
+    CancelNotification,
+    CountNotificationsRecipient,
+    GetNotificationsRecipient,
+    ReadNotification,
+    SendNotification,
+} from '@app/useCases';
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
 import { SendNotificationDto } from '../dtos/SendNotificationDto';
@@ -8,7 +14,11 @@ import { SendNotificationDto } from '../dtos/SendNotificationDto';
 export class NotificationController {
     constructor(
         private readonly sendNotificationUseCase: SendNotification,
-        private readonly readNotificationUseCase: ReadNotification
+        private readonly readNotificationUseCase: ReadNotification,
+        private readonly unreadNotificationUseCase: UnreadNotification,
+        private readonly getNotificationsRecipientUseCase: GetNotificationsRecipient,
+        private readonly cancelNotificationUseCase: CancelNotification,
+        private readonly countNotificationRecipientUseCase: CountNotificationsRecipient
     ) {}
 
     @ApiParam({
