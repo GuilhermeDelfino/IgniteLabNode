@@ -3,7 +3,7 @@ import { Notification } from '@app/entities/notification';
 export abstract class NotificationRepository {
     abstract findById(notificationId: string): Promise<Notification | null>;
     abstract findManyByRecipientId(
-        recipientId: string
+        recipientId: string,
     ): Promise<Notification[]>;
     abstract countManyByRecipientId(recipientId: string): Promise<number>;
     abstract create(notification: Notification): Promise<void>;

@@ -10,7 +10,7 @@ export class ReadNotification {
     constructor(private repo: NotificationRepository) {}
 
     async execute(
-        request: ReadNotificationRequest
+        request: ReadNotificationRequest,
     ): Promise<ReadNotificationResponse> {
         const { notificationId } = request;
         const notification = await this.repo.findById(notificationId);

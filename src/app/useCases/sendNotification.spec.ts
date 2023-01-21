@@ -18,10 +18,10 @@ describe('Use case: Send Notification', () => {
         });
 
         expect((repo as NotificationRepositoryInMemory).database).toHaveLength(
-            1
+            1,
         );
         expect((repo as NotificationRepositoryInMemory).database).toEqual(
-            expect.arrayContaining([expect.any(Notification)])
+            expect.arrayContaining([expect.any(Notification)]),
         );
     });
 });

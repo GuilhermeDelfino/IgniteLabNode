@@ -11,11 +11,11 @@ export type GetNotificationRecipientResponse = {
 export class GetNotificationsRecipient {
     constructor(private repo: NotificationRepository) {}
     async execute(
-        request: GetNotificationRecipientRequest
+        request: GetNotificationRecipientRequest,
     ): Promise<GetNotificationRecipientResponse> {
         const { recipientId } = request;
         const notifications = await this.repo.findManyByRecipientId(
-            recipientId
+            recipientId,
         );
         return {
             notificationsByRecipient: notifications,

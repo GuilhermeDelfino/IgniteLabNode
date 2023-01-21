@@ -15,7 +15,7 @@ export class SendNotification {
     constructor(private repo: NotificationRepository) {}
 
     async execute(
-        request: SendNotificationRequest
+        request: SendNotificationRequest,
     ): Promise<SendNotificationResponse> {
         const { category, content, recipientId } = request;
         const notification = new Notification({

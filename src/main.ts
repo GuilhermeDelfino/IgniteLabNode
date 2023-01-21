@@ -9,7 +9,7 @@ async function bootstrap() {
     const config = new DocumentBuilder()
         .setTitle('Notifications')
         .setDescription(
-            'Send Notification Microservice implementing Clean Architecture, Solid and more...\nSee more in Github: https://github.com/GuilhermeDelfino/IgniteLabNode '
+            'Send Notification Microservice implementing Clean Architecture, Solid and more...\nSee more in Github: https://github.com/GuilhermeDelfino/IgniteLabNode ',
         )
         .setVersion('1.0')
         .addTag('Notification')

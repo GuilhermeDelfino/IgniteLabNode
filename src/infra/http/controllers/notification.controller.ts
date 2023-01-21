@@ -22,7 +22,7 @@ export class NotificationController {
         private readonly unreadNotificationUseCase: UnreadNotification,
         private readonly getNotificationsRecipientUseCase: GetNotificationsRecipient,
         private readonly cancelNotificationUseCase: CancelNotification,
-        private readonly countNotificationRecipientUseCase: CountNotificationsRecipient
+        private readonly countNotificationRecipientUseCase: CountNotificationsRecipient,
     ) {}
 
     @ApiParam({
@@ -33,7 +33,7 @@ export class NotificationController {
     @Get('recipient/:recipientId/findAll')
     async findAllByRecipient(
         @Param('recipientId')
-        recipientId: string
+        recipientId: string,
     ) {
         const notifications =
             await this.getNotificationsRecipientUseCase.execute({
@@ -41,7 +41,7 @@ export class NotificationController {
             });
 
         return notifications.notificationsByRecipient.map(
-            NotificationViewModel.notificationToResponseAllFieldsFormatted
+            NotificationViewModel.notificationToResponseAllFieldsFormatted,
         );
     }
     @ApiParam({
@@ -52,7 +52,7 @@ export class NotificationController {
     @Get('recipient/:recipientId/count')
     async countNotificationsRecipient(
         @Param('recipientId')
-        recipientId: string
+        recipientId: string,
     ) {
         return await this.countNotificationRecipientUseCase.execute({
             recipientId,
@@ -66,7 +66,7 @@ export class NotificationController {
     @Patch('cancel/:notificationId')
     async cancelNotification(
         @Param('notificationId')
-        notificationId: string
+        notificationId: string,
     ) {
         await this.cancelNotificationUseCase.execute({
             notificationId,
@@ -80,7 +80,7 @@ export class NotificationController {
     @Patch('read/:notificationId')
     async readNotification(
         @Param('notificationId')
-        notificationId: string
+        notificationId: string,
     ) {
         await this.readNotificationUseCase.execute({ notificationId });
     }
@@ -92,7 +92,7 @@ export class NotificationController {
     @Patch('unread/:notificationId')
     async unreadNotification(
         @Param('notificationId')
-        notificationId: string
+        notificationId: string,
     ) {
         await this.unreadNotificationUseCase.execute({ notificationId });
     }

@@ -10,7 +10,7 @@ export class UnreadNotification {
     constructor(private repo: NotificationRepository) {}
 
     async execute(
-        request: UnreadNotificationRequest
+        request: UnreadNotificationRequest,
     ): Promise<UnreadNotificationResponse> {
         const { notificationId } = request;
         const notification = await this.repo.findById(notificationId);

@@ -21,7 +21,7 @@ describe('Use case: Get Notification', () => {
             expect.arrayContaining([
                 expect.objectContaining({ recipientId: 'new-id' }),
                 expect.objectContaining({ recipientId: 'new-id' }),
-            ])
+            ]),
         );
     });
 });
