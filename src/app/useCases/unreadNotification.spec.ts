@@ -14,14 +14,14 @@ describe('Use case: Unread Notification', () => {
         const useCase = new UnreadNotification(repo);
         await useCase.execute({ notificationId: 'new-id' });
         expect(
-            (repo as NotificationRepositoryInMemory).database[0].readedAt,
+            (repo as NotificationRepositoryInMemory).database[0].readedAt
         ).toEqual(null);
     });
     it('should be not able to Unread a notification', async () => {
         const useCase = new UnreadNotification(repo);
-        expect(
+        await expect(
             async () =>
-                await useCase.execute({ notificationId: 'new-id-incorrect' }),
+                await useCase.execute({ notificationId: 'new-id-incorrect' })
         ).rejects.toThrow(NotificationNotFoundError);
     });
 });

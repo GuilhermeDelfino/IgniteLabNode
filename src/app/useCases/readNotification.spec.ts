@@ -14,14 +14,14 @@ describe('Use case: Read Notification', () => {
         const useCase = new ReadNotification(repo);
         await useCase.execute({ notificationId: 'new-id' });
         expect(
-            (repo as NotificationRepositoryInMemory).database[0].readedAt,
+            (repo as NotificationRepositoryInMemory).database[0].readedAt
         ).toEqual(expect.any(Date));
     });
     it('should be not able to Read a notification', async () => {
         const useCase = new ReadNotification(repo);
-        expect(
+        await expect(
             async () =>
-                await useCase.execute({ notificationId: 'new-id-incorrect' }),
+                await useCase.execute({ notificationId: 'new-id-incorrect' })
         ).rejects.toThrow(NotificationNotFoundError);
     });
 });

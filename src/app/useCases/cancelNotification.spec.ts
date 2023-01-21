@@ -14,14 +14,14 @@ describe('Use case: Cancel Notification', () => {
         const useCase = new CancelNotification(repo);
         await useCase.execute({ notificationId: 'new-id' });
         expect(
-            (repo as NotificationRepositoryInMemory).database[0].canceledAt,
+            (repo as NotificationRepositoryInMemory).database[0].canceledAt
         ).toEqual(expect.any(Date));
     });
     it('should be not able to Cancel a notification', async () => {
         const useCase = new CancelNotification(repo);
-        expect(
+        await expect(
             async () =>
-                await useCase.execute({ notificationId: 'new-id-incorrect' }),
+                await useCase.execute({ notificationId: 'new-id-incorrect' })
         ).rejects.toThrow(NotificationNotFoundError);
     });
 });

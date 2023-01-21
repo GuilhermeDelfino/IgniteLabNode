@@ -22,7 +22,7 @@ export class NotificationController {
         private readonly unreadNotificationUseCase: UnreadNotification,
         private readonly getNotificationsRecipientUseCase: GetNotificationsRecipient,
         private readonly cancelNotificationUseCase: CancelNotification,
-        private readonly countNotificationRecipientUseCase: CountNotificationsRecipient,
+        private readonly countNotificationRecipientUseCase: CountNotificationsRecipient
     ) {}
 
     @ApiParam({
@@ -33,7 +33,7 @@ export class NotificationController {
     @Get('recipient/:recipientId/findAll')
     async findAllByRecipient(
         @Param('recipientId')
-        recipientId: string,
+        recipientId: string
     ) {
         const notifications =
             await this.getNotificationsRecipientUseCase.execute({
@@ -41,9 +41,10 @@ export class NotificationController {
             });
 
         return notifications.notificationsByRecipient.map(
-            NotificationViewModel.notificationToResponseAllFieldsFormatted,
+            NotificationViewModel.notificationToResponseAllFieldsFormatted
         );
     }
+
     @ApiParam({
         name: 'recipientId',
         example: 'recipient-id',
@@ -52,12 +53,13 @@ export class NotificationController {
     @Get('recipient/:recipientId/count')
     async countNotificationsRecipient(
         @Param('recipientId')
-        recipientId: string,
+        recipientId: string
     ) {
         return await this.countNotificationRecipientUseCase.execute({
             recipientId,
         });
     }
+
     @ApiParam({
         name: 'notificationId',
         example: 'notifications-id',
@@ -66,12 +68,13 @@ export class NotificationController {
     @Patch('cancel/:notificationId')
     async cancelNotification(
         @Param('notificationId')
-        notificationId: string,
+        notificationId: string
     ) {
         await this.cancelNotificationUseCase.execute({
             notificationId,
         });
     }
+
     @ApiParam({
         name: 'notificationId',
         example: 'notification-id',
@@ -80,10 +83,11 @@ export class NotificationController {
     @Patch('read/:notificationId')
     async readNotification(
         @Param('notificationId')
-        notificationId: string,
+        notificationId: string
     ) {
         await this.readNotificationUseCase.execute({ notificationId });
     }
+
     @ApiParam({
         name: 'notificationId',
         example: 'notification-id',
@@ -92,10 +96,11 @@ export class NotificationController {
     @Patch('unread/:notificationId')
     async unreadNotification(
         @Param('notificationId')
-        notificationId: string,
+        notificationId: string
     ) {
         await this.unreadNotificationUseCase.execute({ notificationId });
     }
+
     @Post('send')
     async sendNotification(@Body() body: SendNotificationDto): Promise<void> {
         const categoryEnum = findCategoryEnum(body.category);

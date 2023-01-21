@@ -23,6 +23,7 @@ export class PrismaNotificationMapper {
             recipientId,
         };
     }
+
     static prismaToDomain(notification: PrismaNotification): Notification {
         const {
             category,

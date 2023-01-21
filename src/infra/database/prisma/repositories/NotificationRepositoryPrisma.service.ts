@@ -8,6 +8,7 @@ import { PrismaService } from '../prisma.service';
 @Injectable()
 export class NotificationRepositoryPrisma implements NotificationRepository {
     constructor(private readonly prisma: PrismaService) {}
+
     async findById(notificationId: string): Promise<Notification> {
         const notification = await this.prisma.notifications.findFirst({
             where: { id: notificationId },
@@ -17,6 +18,7 @@ export class NotificationRepositoryPrisma implements NotificationRepository {
         }
         return PrismaNotificationMapper.prismaToDomain(notification);
     }
+
     async findManyByRecipientId(recipientId: string): Promise<Notification[]> {
         const notifications = await this.prisma.notifications.findMany({
             where: {
@@ -25,13 +27,15 @@ export class NotificationRepositoryPrisma implements NotificationRepository {
         });
         return notifications.map(PrismaNotificationMapper.prismaToDomain);
     }
+
     async countManyByRecipientId(recipientId: string): Promise<number> {
         const count = await this.prisma.notifications.count({
-            where: { recipientId: recipientId },
+            where: { recipientId },
         });
 
         return count;
     }
+
     async update(notification: Notification): Promise<void> {
         await this.prisma.notifications.update({
             where: {

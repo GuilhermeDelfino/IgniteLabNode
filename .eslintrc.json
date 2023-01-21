@@ -7,9 +7,7 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "airbnb",
-        "plugin:prettier/recommended",
-        "plugin:nestjs/recommended"
+        "plugin:prettier/recommended"
     ],
     "overrides": [
         {
@@ -26,7 +24,6 @@
     },
     "plugins": ["@typescript-eslint", "jest", "sonarjs", "prettier"],
     "rules": {
-        "indent": ["error", "tab"],
         "linebreak-style": ["error", "unix"],
         "quotes": ["error", "single"],
         "sonarjs/cognitive-complexity": ["error", 5],
@@ -36,6 +33,10 @@
         "jest/no-focused-tests": "error",
         "jest/no-identical-title": "error",
         "jest/prefer-to-have-length": "warn",
-        "jest/valid-expect": "error"
+        "jest/valid-expect": "error",
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }
