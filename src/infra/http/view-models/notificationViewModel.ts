@@ -12,7 +12,7 @@ export type NotificationToResponseAllFieldsFormattedResponse = {
 };
 export class NotificationViewModel {
     static notificationToResponseAllFieldsFormatted(
-        notification: Notification,
+        notification: Notification
     ): NotificationToResponseAllFieldsFormattedResponse {
         const {
             canceledAt,

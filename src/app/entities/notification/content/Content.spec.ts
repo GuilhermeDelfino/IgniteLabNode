@@ -13,15 +13,15 @@ describe('Entity: Notification Content', () => {
     });
     it('should be throw MinLengthError', () => {
         expect(() => Content.of('C'.repeat(Content.MIN_LENGTH - 1))).toThrow(
-            MinLengthError,
+            MinLengthError
         );
     });
     it('should be throw MaxLengthError', () => {
         expect(() => Content.of('C'.repeat(Content.MAX_LENGTH + 1))).toThrow(
-            MaxLengthError,
+            MaxLengthError
         );
     });
-    it('should be throw MaxLengthError', () => {
+    it('should be throw MaxLengthError with number', () => {
         expect(() => Content.of('Guilherme 123')).toThrow(JustStringError);
     });
 });

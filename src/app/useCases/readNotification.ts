@@ -1,6 +1,7 @@
 import { NotificationRepository } from '@app/repositories/NotificationRepository';
 import { Injectable } from '@nestjs/common';
 import { NotificationNotFoundError } from './errors/NotificationNotFoundError';
+
 export type ReadNotificationRequest = {
     notificationId: string;
 };
@@ -10,7 +11,7 @@ export class ReadNotification {
     constructor(private repo: NotificationRepository) {}
 
     async execute(
-        request: ReadNotificationRequest,
+        request: ReadNotificationRequest
     ): Promise<ReadNotificationResponse> {
         const { notificationId } = request;
         const notification = await this.repo.findById(notificationId);

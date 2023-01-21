@@ -2,6 +2,7 @@ import { Notification } from '@app/entities/notification';
 import { Categories } from '@app/entities/notification/category';
 import { NotificationRepository } from '@app/repositories/NotificationRepository';
 import { Injectable } from '@nestjs/common';
+
 export type SendNotificationRequest = {
     recipientId: string;
     content: string;
@@ -15,7 +16,7 @@ export class SendNotification {
     constructor(private repo: NotificationRepository) {}
 
     async execute(
-        request: SendNotificationRequest,
+        request: SendNotificationRequest
     ): Promise<SendNotificationResponse> {
         const { category, content, recipientId } = request;
         const notification = new Notification({

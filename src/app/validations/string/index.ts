@@ -14,22 +14,27 @@ export interface IStringValidator {
 export class StringValidator implements IStringValidator {
     private defaultMinLengthMessageError =
         'The value must be greather than min';
+
     private defaultMaxLengthMessageError = 'The value must be less than max';
+
     private defaultJustStringMessageError = 'The value must be only a string';
 
     constructor(private _value: string) {}
+
     validateValueHasMin(min: number): IStringValidator {
         if (this._value.length < min) {
             throw new MinLengthError(this.defaultMinLengthMessageError);
         }
         return this;
     }
+
     validateValueHasMax(max: number): IStringValidator {
         if (this._value.length > max) {
             throw new MaxLengthError(this.defaultMaxLengthMessageError);
         }
         return this;
     }
+
     validateIsJustString(): IStringValidator {
         if (!regexJustString.test(this._value)) {
             throw new JustStringError(this.defaultJustStringMessageError);
