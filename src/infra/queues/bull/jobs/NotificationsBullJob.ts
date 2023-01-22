@@ -10,10 +10,10 @@ export class NotificationsBullJobs extends NotificationsJobs {
         super();
     }
     async sendNotificationJob(notification: Notification): Promise<void> {
-        console.log('fazendo requisicao via job');
         this.notificationQueue.add(
             'send',
-            BullNotificationMapper.toStaticAttributes(notification)
+            BullNotificationMapper.toStaticAttributes(notification),
+            { delay: 500, attempts: 5, priority: 2 }
         );
     }
 }

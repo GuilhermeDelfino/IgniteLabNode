@@ -2,6 +2,7 @@ import { NotificationsJobs } from '@app/jobs/NotificationJobs';
 import { BullModule } from '@nestjs/bull';
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '@src/infra/database/database.module';
+import { LoggerModule } from '@src/infra/util/Logger/logger.module';
 import { NotificationsBullJobs } from './jobs/NotificationsBullJob';
 import { NotificationBullProcessor } from './processors/NotificationBullProcessor';
 
@@ -17,6 +18,7 @@ import { NotificationBullProcessor } from './processors/NotificationBullProcesso
             name: 'notification',
         }),
         DatabaseModule,
+        LoggerModule,
     ],
     providers: [
         { provide: NotificationsJobs, useClass: NotificationsBullJobs },
