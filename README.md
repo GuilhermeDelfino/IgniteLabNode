@@ -16,14 +16,16 @@
 -   Typescript
 -   PrismaORM
 -   OpenAPI / Swagger
+-   Redis
+-   Docker / Docker Compose
 
 ## Configurations
 
 -   Prettier - To format code
--   Eslint - Linter to JS
+-   Eslint - Linter for JS
 -   Husky - Generate Hooks to pre-commit and commit-msg
 -   CommitLinter - Conventional Commit required with Husky
--   Git
+-   Git and Github - Code Versioning
 
 ## Concepts / Good pratices
 
@@ -31,6 +33,7 @@
 -   Domain Driven Design
 -   SOLID
 -   Clean Code
+-   Jobs
 
 ## Patterns
 
