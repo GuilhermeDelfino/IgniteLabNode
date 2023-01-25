@@ -1,11 +1,11 @@
 import { findCategoryEnum } from '@app/entities/notification/category';
 import {
-    UnreadNotification,
     CancelNotification,
     CountNotificationsRecipient,
     GetNotificationsRecipient,
     ReadNotification,
     SendNotification,
+    UnreadNotification,
 } from '@app/useCases';
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiParam, ApiTags } from '@nestjs/swagger';
@@ -27,7 +27,7 @@ export class NotificationController {
 
     @ApiParam({
         name: 'recipientId',
-        example: 'recipient-id',
+        example: '99efff0f-a247-417a-9826-09fb2e919317',
         required: true,
     })
     @Get('recipient/:recipientId/findAll')
@@ -47,7 +47,7 @@ export class NotificationController {
 
     @ApiParam({
         name: 'recipientId',
-        example: 'recipient-id',
+        example: '99efff0f-a247-417a-9826-09fb2e919317',
         required: true,
     })
     @Get('recipient/:recipientId/count')
@@ -62,7 +62,7 @@ export class NotificationController {
 
     @ApiParam({
         name: 'notificationId',
-        example: 'notifications-id',
+        example: '99efff0f-a247-417a-9826-09fb2e919317',
         required: true,
     })
     @Patch('cancel/:notificationId')
@@ -77,7 +77,7 @@ export class NotificationController {
 
     @ApiParam({
         name: 'notificationId',
-        example: 'notification-id',
+        example: '99efff0f-a247-417a-9826-09fb2e919317',
         required: true,
     })
     @Patch('read/:notificationId')
@@ -90,7 +90,7 @@ export class NotificationController {
 
     @ApiParam({
         name: 'notificationId',
-        example: 'notification-id',
+        example: '99efff0f-a247-417a-9826-09fb2e919317',
         required: true,
     })
     @Patch('unread/:notificationId')

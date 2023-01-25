@@ -22,6 +22,8 @@ export class NotificationBullProcessor {
         if (err.message) {
             this.logger.error(err.message);
         }
+        this.logger.log('processing job send notification');
+        this.logger.log(`notificatio ID = ${job.data.id}`);
         this.repo.create(job.data).finally(() => job.finished());
     }
 }

@@ -29,7 +29,7 @@ export class SendNotificationDto {
     @IsNotEmpty()
     @IsUUID()
     @ApiProperty({
-        example: 'new-recipient-id',
+        example: '99efff0f-a247-417a-9826-09fb2e919317',
         type: String,
     })
     recipientId: string;
